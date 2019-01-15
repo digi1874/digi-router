@@ -10,7 +10,18 @@ export default class Location {
     if (tag === stringTag) {
       aElement.href = location
     } else if (tag === objectTag) {
+      location = { ...location }
       aElement.href = location.href || document.location.href
+      delete location.href
+
+      if (location.params) {
+        location.search = location.search || '?'
+        Object.keys(location.params).forEach(key => {
+          location.search += `${key}=${location.params[key]}&`
+        })
+        location.search.replace(/[&]$/, '')
+      }
+
       Object.keys(location).forEach(key => {
         aElement[key] = location[key]
       })

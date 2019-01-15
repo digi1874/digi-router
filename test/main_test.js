@@ -88,7 +88,9 @@ describe('to', () => {
     it('错误页', () => {
       router.push({
         pathname: '/error',
-        search: '?code=' + errorCode
+        params: {
+          code: errorCode
+        }
       })
 
       expect(homePage.style.display).toBe('none')
