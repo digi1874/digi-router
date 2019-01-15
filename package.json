@@ -1,0 +1,43 @@
+{
+  "name": "digi-router",
+  "version": "1.0.1",
+  "description": "digi-router",
+  "main": "main.js",
+  "scripts": {
+    "start": "rollup --config rollup.config.js",
+    "dev": "rollup --watch --config rollup.config.dev.js",
+    "build": "rollup --config rollup.config.prod.js",
+    "test": "jest --config jest.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digi1874/digi-router.git"
+  },
+  "keywords": [
+    "js",
+    "javascript",
+    "digi-router"
+  ],
+  "author": "lin09",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/digi1874/digi-router/issues"
+  },
+  "homepage": "https://github.com/digi1874/digi-router#readme",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.4.2",
+    "jest": "^23.6.0",
+    "jsonfile": "^5.0.0",
+    "rollup-plugin-babel": "^4.2.0",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-eslint": "^5.0.0",
+    "rollup-plugin-filesize": "^5.0.1",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-uglify": "^6.0.0",
+    "uglify-es": "^3.3.9"
+  }
+}
