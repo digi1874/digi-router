@@ -102,9 +102,6 @@ describe('to', () => {
 })
 
 // 随便调用一下
-router.go(-1)
-router.back()
-router.forward()
 router.currentLocation
 const popstate = new Event('popstate')
 window.dispatchEvent(popstate)
