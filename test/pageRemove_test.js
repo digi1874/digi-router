@@ -20,7 +20,11 @@ it('测试页面移除', () => {
   page.remove()
 
   // 页面移除后，watch不会再触发
-  router.push('/remove/8888')
+  router.push({
+    pathname: '/remove/8888',
+    search: '?t=1',
+    params: { a: 1 },
+  })
 
   page.remove()
 

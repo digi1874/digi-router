@@ -1,0 +1,26 @@
+{
+  "source": {
+    "include": ["src"],
+    "includePattern": ".js$",
+    "excludePattern": "(node_modules/|docs)"
+  },
+  "plugins": [
+  ],
+  "opts": {
+    "encoding": "utf8",
+    "destination": "./docs/",
+    "recurse": true,
+    "readme": "README.md"
+  },
+  "templates": {
+    "default": {
+      "includeDate": false,
+      "layoutFile": "./jsdoc/layout.tmpl",
+      "staticFiles": {
+        "include": [
+            "./jsdoc/static"
+        ]
+      }
+    }
+  }
+}

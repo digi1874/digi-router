@@ -5,6 +5,7 @@ const pages = {}
 const paramRE = /\u003a[^\u002f]+/g
 let currentLocation = new Location(window.location.href)
 
+// 隐藏页面
 const hidePage = page => {
   const elements = page.el
   elements.forEach((element, index) => {
@@ -15,6 +16,7 @@ const hidePage = page => {
   })
 }
 
+// 显示页面
 const showPage = page => {
   const elements = page.el
   elements.forEach((element, index) => {
@@ -24,6 +26,12 @@ const showPage = page => {
   })
 }
 
+/**
+ * 添加页面
+ * @private
+ * @param {String} pathname - location.pathnam
+ * @param {Object} element  - 元素
+ */
 export const addPage = (pathname, element) => {
   let item = pages[pathname]
 
@@ -46,6 +54,12 @@ export const addPage = (pathname, element) => {
   switchPage(currentLocation)
 }
 
+/**
+ * 删除页面
+ * @private
+ * @param {String} pathname - location.pathnam
+ * @param {Object} element  - 元素
+ */
 export const removePage = (pathname, element) => {
   const elements = pages[pathname].el
   const index = elements.indexOf(element)
@@ -55,6 +69,11 @@ export const removePage = (pathname, element) => {
   }
 }
 
+/**
+ * 切换页面
+ * @private
+ * @param {Object} location - location对象
+ */
 export const switchPage = location => {
   currentLocation = location
   let matched = false
@@ -74,4 +93,9 @@ export const switchPage = location => {
   })
 }
 
+/**
+ * 获取当前location
+ * @private
+ * @returns {Object} - 返回当前location
+ */
 export const getCurrentLocation = () => currentLocation

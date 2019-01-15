@@ -9,10 +9,25 @@ const router = [ path, to ]
 Object.defineProperties(router, {
   push            : { value : push },
   replace         : { value : replace },
-  go              : { value : number => window.history.go(number) },
-  back            : { value : () => window.history.back() },
-  forward         : { value : () => window.history.forward() },
   Location        : { value : Location },
+  /**
+   * 当前location
+   * @example
+   * import router from 'digi-router'
+   * console.log(router.currentLocation)
+   * // => {
+   * //      hash: '',
+   * //      host:'localhost:8080',
+   * //      hostname:'localhost:8080',
+   * //      href:'http://localhost:8080/',
+   * //      origin: 'http://localhost:8080',
+   * //      pathname: '/',
+   * //      protocol: 'http:',
+   * //      search: '',
+   * //      params: {},
+   * //      path: '/'
+   * //    }
+   */
   currentLocation : { get   : () => getCurrentLocation() }
 })
 

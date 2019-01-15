@@ -1,6 +1,28 @@
 import { objectTag } from './objectTag'
 import { push, replace } from './router'
 
+/**
+ * 创建链接元素时的属性
+ * @name to
+ * @type {String|Object}
+ * @example
+ * import digi from 'digi'
+ * import router from 'digi-router'
+ *
+ * digi.plugins([ ...router ])
+ *
+ * digi([
+ *   { to: '/' },  // 跳转
+ *   { to: { pathname: '/', replace: true } }  // 替换
+ * ])
+ */
+
+/**
+ * 处理链接
+ * @private
+ * @param {Object}        element - 元素
+ * @param {String|Object} value   - 字符串为href；对象为{hash, host, hostname, href, origin, pathname, protocol, search, replace}，参考window.location
+ */
 const handler = (element, value) => {
   const tag = toString.call(value)
 
