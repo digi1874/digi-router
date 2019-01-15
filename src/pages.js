@@ -7,27 +7,21 @@ let currentLocation = new Location(window.location.href)
 
 const hidePage = page => {
   const elements = page.el
-  for (const index in elements) {
-    if (elements.hasOwnProperty(index)) {
-      const element = elements[index]
-      if (element.style.display !== 'none') {
-        page.showElDisplay[index] = element.style.display
-        element.style.display = 'none'
-      }
+  elements.forEach((element, index) => {
+    if (element.style.display !== 'none') {
+      page.showElDisplay[index] = element.style.display
+      element.style.display = 'none'
     }
-  }
+  })
 }
 
 const showPage = page => {
   const elements = page.el
-  for (const index in elements) {
-    if (elements.hasOwnProperty(index)) {
-      const element = elements[index]
-      if (element.style.display === 'none') {
-        element.style.display = page.showElDisplay[index]
-      }
+  elements.forEach((element, index) => {
+    if (element.style.display === 'none') {
+      element.style.display = page.showElDisplay[index]
     }
-  }
+  })
 }
 
 export const addPage = (pathname, element) => {
@@ -64,21 +58,20 @@ export const removePage = (pathname, element) => {
 export const switchPage = location => {
   currentLocation = location
   let matched = false
-  for (const pathname in pages) {
-    if (pages.hasOwnProperty(pathname)) {
-      const page = pages[pathname];
-      const paramValues = page.RE.exec(location.pathname)
-      if (paramValues && !matched) {
-        location.params = location.params || {}
-        for (let i = 1; i < paramValues.length; i ++) {
-          location.params[page.paramKeys[i]] = paramValues[i]
-        }
-        triggerWatch(pathname, location)
-        showPage(page)
-        matched = true
-      } else {
-        hidePage(page)
+  Object.keys(pages).forEach(pathname => {
+    const page = pages[pathname];
+    const paramValues = page.RE.exec(location.pathname)
+    if (paramValues && !matched) {
+      for (let i = 1; i < paramValues.length; i ++) {
+        location.params[page.paramKeys[i]] = paramValues[i]
       }
+      triggerWatch(pathname, location)
+      showPage(page)
+      matched = true
+    } else {
+      hidePage(page)
     }
-  }
+  })
 }
+
+export const getCurrentLocation = () => currentLocation
