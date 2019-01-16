@@ -1,5 +1,8 @@
 import { objectTag } from './objectTag'
 import { push, replace } from './router'
+import Location from './location'
+
+const aElTagName = document.createElement('a').tagName
 
 /**
  * 创建链接元素时的属性
@@ -24,6 +27,10 @@ import { push, replace } from './router'
  * @param {String|Object} value   - 字符串为href；对象为{hash, host, hostname, href, origin, pathname, protocol, search, replace}，参考window.location
  */
 const handler = (element, value) => {
+  if (element.tagName === aElTagName) {
+    element.href = (new Location(value)).href
+  }
+
   const tag = toString.call(value)
 
   element.addEventListener('click', e => {

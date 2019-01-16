@@ -8,7 +8,7 @@ const detailId = '123'
 const errorPage = document.createElement('div')
 const errorCode = '404'
 const listLink = document.createElement('a')
-const detailLink = document.createElement('a')
+const detailLink = document.createElement('li')
 const clickEvent = new Event('click')
 
 describe('path', () => {
@@ -70,6 +70,7 @@ describe('to', () => {
       })
       listLink.dispatchEvent(clickEvent)
 
+      expect(listLink.href).toBe(location.href)
       expect(homePage.style.display).toBe('none')
       expect(listPage.style.display).toBe('')
       expect(listFooterPage.style.display).toBe('')
