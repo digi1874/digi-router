@@ -69,6 +69,7 @@ describe('to', () => {
         replace: true
       })
       listLink.dispatchEvent(clickEvent)
+      listLink.dispatchEvent(clickEvent)
 
       expect(listLink.href).toBe(location.href)
       expect(homePage.style.display).toBe('none')
@@ -79,6 +80,7 @@ describe('to', () => {
     })
     it('详情页', () => {
       handler(detailLink, '/list/' + detailId)
+      detailLink.dispatchEvent(clickEvent)
       detailLink.dispatchEvent(clickEvent)
 
       expect(homePage.style.display).toBe('none')

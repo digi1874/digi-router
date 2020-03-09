@@ -1,5 +1,5 @@
 import Location from './location'
-import { switchPage } from './pages'
+import { switchPage, getCurrentLocation } from './pages'
 
 /**
  * @name history
@@ -22,9 +22,12 @@ window.addEventListener('popstate', () => switchPage(new Location(window.locatio
  * router.push({ pathname: '/' })
  */
 export const push = location => {
-  location = new Location(location)
-  switchPage(location)
-  window.history.pushState(location, '', location.href)
+  const newLocation = new Location(location)
+  const oldLocation = getCurrentLocation()
+  if (newLocation.href !== oldLocation.href) {
+    switchPage(newLocation)
+    window.history.pushState(newLocation, '', newLocation.href)
+  }
 }
 
 /**
@@ -37,8 +40,11 @@ export const push = location => {
  * router.replace({ pathname: '/' })
  */
 export const replace = location => {
-  location = new Location(location)
-  switchPage(location)
-  window.history.pushState(location, '', location.href)
+  const newLocation = new Location(location)
+  const oldLocation = getCurrentLocation()
+  if (newLocation.href !== oldLocation.href) {
+    switchPage(newLocation)
+    window.history.replaceState(newLocation, '', newLocation.href)
+  }
 }
 
