@@ -63,7 +63,7 @@ export default class Location {
         Object.keys(location.params).forEach(key => {
           location.search += `${key}=${location.params[key]}&`
         })
-        location.search.replace(/[&]$/, '')
+        location.search = location.search.replace(/[&]$/, '')
       }
 
       // 设置值

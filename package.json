@@ -1,6 +1,6 @@
 {
   "name": "digi-router",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "digi-router",
   "main": "main.js",
   "scripts": {
